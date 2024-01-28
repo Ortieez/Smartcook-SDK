@@ -1,7 +1,6 @@
-import {Basics} from "./resources/basics/basics";
-import {Recipes} from "./resources/recipes/recipes";
-import {Config} from "./resources/base";
-
+import { Basics } from './resources/basics/basics';
+import { Recipes } from './resources/recipes/recipes';
+import { Config } from './resources/base';
 
 export class Smartcook {
   basics: Basics;

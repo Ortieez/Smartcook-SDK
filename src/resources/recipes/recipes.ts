@@ -11,14 +11,14 @@ export class Recipes extends Base {
   addNewRecipe(recipe: Recipe): Promise<ValidResponse | ErrorResponse> {
     return this.request('/recipe-add', {
       method: 'POST',
-      body: this.prepareBody({ "data": recipe.toObject()})
+      body: this.prepareBody({ data: recipe.toObject() })
     });
   }
 
   validateRecipe(recipe: Recipe): Promise<ValidResponse | ErrorResponse> {
     return this.request('/recipe-validate', {
       method: 'POST',
-      body: this.prepareBody({ "data": recipe.toObject()})
+      body: this.prepareBody({ data: recipe.toObject() })
     });
   }
 }

@@ -169,6 +169,6 @@ export class Recipe implements IRecipe {
         return ingredient.toObject();
       }),
       author: this.author
-    }
+    };
   }
 }

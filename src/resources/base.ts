@@ -1,4 +1,4 @@
-const crypto = require("crypto");
+const crypto = require('crypto');
 
 export type Config = {
   baseUrl?: string;
@@ -18,7 +18,8 @@ export abstract class Base {
   }
 
   public createSignature(data: Object) {
-    return crypto.createHmac('sha256', this.secret)
+    return crypto
+      .createHmac('sha256', this.secret)
       .update(JSON.stringify(data))
       .digest('hex');
   }

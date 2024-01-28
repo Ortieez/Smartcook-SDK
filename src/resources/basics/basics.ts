@@ -14,8 +14,4 @@ export class Basics extends Base {
   default(): Promise<DefaultResponse | ErrorResponse> {
     return this.request('/');
   }
-
-  listCategories(): Promise<Object> {
-    return this.request('/structure');
-  }
 }

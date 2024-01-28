@@ -1,4 +1,4 @@
-import {UnitKey} from '../types';
+import { UnitKey } from '../types';
 
 export enum Necessary {
   yes = '1',
@@ -87,12 +87,12 @@ export class Ingredient implements IIngredient {
   }
 
   public toObject(this: Ingredient): Record<string, any> {
-      return {
-          name: this.name,
-          quantity: this.quantity,
-          unit: this.unit,
-          necessary: this.necessary,
-          ...(this.comment ? {comment: this.comment} : {})
-      };
+    return {
+      name: this.name,
+      quantity: this.quantity,
+      unit: this.unit,
+      necessary: this.necessary,
+      ...(this.comment ? { comment: this.comment } : {})
+    };
   }
 }
