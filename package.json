@@ -1,21 +1,33 @@
 {
   "name": "smartcook-sdk",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.2",
+  "description": "SDK For a school project Smartcook api",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
   "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "microbundle --tsconfig tsconfig.json --no-sourcemap"
+    "build": "microbundle --tsconfig tsconfig.json --no-sourcemap",
+    "prettier": "prettier --config .prettierrc ./**/*.ts --write"
   },
+  "exports": {
+    "require": "./dist/index.js",
+    "default": "./dist/index.modern.js"
+  },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "microbundle": "^0.15.1"
-  },
-  "dependencies": {
-    "isomorphic-unfetch": "^4.0.2"
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.11",
+    "jest": "^29.7.0",
+    "microbundle": "^0.15.1",
+    "prettier": "^3.2.4",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   }
 }

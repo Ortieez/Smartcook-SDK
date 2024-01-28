@@ -1,20 +1,21 @@
-import {Base} from "../base";
+import { Base } from '../base';
+import { DefaultResponse, EchoResponse, ErrorResponse } from './types';
 
 export class Basics extends Base {
-    echo(message: string): Promise<Object> {
-        return this.request('/echo', {
-            method: "POST",
-            body: this.prepareBody( {
-                mess: message
-            })
-        });
-    }
+  echo(message: string): Promise<EchoResponse | ErrorResponse> {
+    return this.request('/echo', {
+      method: 'POST',
+      body: this.prepareBody({
+        mess: message
+      })
+    });
+  }
 
-    default(): Promise<Object> {
-        return this.request('/');
-    }
+  default(): Promise<DefaultResponse | ErrorResponse> {
+    return this.request('/');
+  }
 
-    listCategories(): Promise<Object> {
-        return this.request('/structure');
-    }
+  listCategories(): Promise<Object> {
+    return this.request('/structure');
+  }
 }
