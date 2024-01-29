@@ -1,6 +1,8 @@
 import { Basics } from './resources/basics/basics';
 import { Recipes } from './resources/recipes/recipes';
 import { Config } from './resources/base';
+export { Recipe } from "./resources/recipes/models/Recipe";
+export { Ingredient } from "./resources/recipes/models/Ingredient";
 
 export class Smartcook {
   basics: Basics;
@@ -11,3 +13,4 @@ export class Smartcook {
     this.recipes = new Recipes(config);
   }
 }
+
