@@ -110,6 +110,46 @@ smartCookSDK.recipes.validateRecipe(recipeData)
   });
 ```
 
-## Adding Your Own Examples
+#### `removeRecipe(recipeId: number): Promise<ValidResponse | ErrorResponse>`
 
-Feel free to add your own examples based on the code provided. Simply instantiate the `Smartcook` class and use its methods as shown in the examples above.
+Deletes a recipe from database using the SmartCook API.
+
+##### Example:
+
+```javascript
+smartCookSDK.recipes.removeRecipe(3)
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+```
+
+### `Recipes` and `Ingredient` class
+To use the `Recipes` and `Ingredients` classes in the SmartCook SDK, you can follow the examples below. These examples demonstrate how to create instances of the classes, populate them with data, and then use them with the SDK functions.
+
+```javascript
+const ingredient1 = new Ingredient("Tomato", 2, "pc", Necessary.yes, "Ripe and red");
+const ingredient2 = new Ingredient("Onion", 1, "pc", Necessary.yes, "White");
+
+const recipeData = new Recipe(
+    "Spaghetti",                // Name
+    2,                          // Difficulty
+    "30",                       // Duration
+    5,                          // Price
+    "Abcdefgh",                 // Description
+    "cs",                       // Country (ISO 3166 alpha-2)
+    [1, 2],                     // Dish category
+    [9],                        // Recipe Category
+    [1],                        // Tolerance
+    [ingredient1, ingredient2], // Ingredient/s
+    "Adam Lipert"               // Author (has to be the same name as name in database
+);
+```
+
+### TODO:
+
+- [ ] Create an Enum for Dish category, Recipe Category, Tolerance, Difficulty, Unit, Price (for easier use in programming)
+- [ ] Fix all missing imports
+- [ ] Add function to map an object to recipe alongside the standard use

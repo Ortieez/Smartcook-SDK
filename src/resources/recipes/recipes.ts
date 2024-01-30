@@ -15,6 +15,13 @@ export class Recipes extends Base {
     });
   }
 
+  removeRecipe(recipeId: number): Promise<ValidResponse | ErrorResponse> {
+    return this.request('/recipe-remove', {
+      method: 'POST',
+      body: this.prepareBody({ recipe_id: recipeId })
+    });
+  }
+
   validateRecipe(recipe: Recipe): Promise<ValidResponse | ErrorResponse> {
     return this.request('/recipe-validate', {
       method: 'POST',
