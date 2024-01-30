@@ -1,6 +1,6 @@
 {
   "name": "smartcook-sdk",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "SDK for a school project Smartcook api",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
