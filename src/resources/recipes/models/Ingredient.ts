@@ -1,15 +1,10 @@
-import { UnitKey } from '../types';
-
-export enum Necessary {
-  yes = '1',
-  no = '0'
-}
+import { Necessary, Unit } from '../types';
 
 export interface IIngredient {
   id: number;
   name: string;
   quantity: number;
-  unit: UnitKey;
+  unit: Unit;
   necessary: Necessary;
   comment?: string;
 }
@@ -18,24 +13,26 @@ export class Ingredient implements IIngredient {
   private _id: number;
   private _name: string;
   private _quantity: number;
-  private _unit: UnitKey;
+  private _unit: Unit;
   private _necessary: Necessary;
   private _comment?: string;
 
   constructor(
-    name: string,
-    quantity: number,
-    unit: UnitKey,
-    necessary: Necessary,
-    comment?: string,
-    id?: number
+    ingredient: {
+      name: string,
+      quantity: number,
+      unit: Unit,
+      necessary: Necessary,
+      comment?: string,
+      id?: number
+    }
   ) {
-    this._id = id;
-    this._name = name;
-    this._quantity = quantity;
-    this._unit = unit;
-    this._necessary = necessary;
-    this._comment = comment;
+    this._id = ingredient.id;
+    this._name = ingredient.name;
+    this._quantity = ingredient.quantity;
+    this._unit = ingredient.unit;
+    this._necessary = ingredient.necessary;
+    this._comment = ingredient.comment;
   }
 
   get id(): number {
@@ -62,11 +59,11 @@ export class Ingredient implements IIngredient {
     this._quantity = value;
   }
 
-  get unit(): UnitKey {
+  get unit(): Unit {
     return this._unit;
   }
 
-  set unit(value: UnitKey) {
+  set unit(value: Unit) {
     this._unit = value;
   }
 

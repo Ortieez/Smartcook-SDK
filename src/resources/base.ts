@@ -4,6 +4,7 @@ export type Config = {
   baseUrl?: string;
   userId: number;
   secret: string;
+  authorName: string;
 };
 
 export abstract class Base {

@@ -1,4 +1,4 @@
-import { DishCategoryKey, RecipeCategoryKey, ToleranceKey } from '../types';
+import { DishCategory, RecipeCategory, Tolerance } from '../types';
 import { Ingredient } from './Ingredient';
 
 interface IRecipe {
@@ -9,9 +9,9 @@ interface IRecipe {
   price: number;
   description: string;
   country: string;
-  dishCategory: DishCategoryKey[];
-  recipeCategory: RecipeCategoryKey[];
-  tolerance: ToleranceKey[];
+  dishCategory: DishCategory[];
+  recipeCategory: RecipeCategory[];
+  tolerance: Tolerance[];
   ingredients: Ingredient[];
   author: string;
 }
@@ -24,38 +24,40 @@ export class Recipe implements IRecipe {
   private _price: number;
   private _description: string;
   private _country: string;
-  private _dishCategory: DishCategoryKey[];
-  private _recipeCategory: RecipeCategoryKey[];
-  private _tolerance: ToleranceKey[];
+  private _dishCategory: DishCategory[];
+  private _recipeCategory: RecipeCategory[];
+  private _tolerance: Tolerance[];
   private _ingredients: Ingredient[];
   private _author: string;
 
   constructor(
-    name: string,
-    difficulty: number,
-    duration: string,
-    price: number,
-    description: string,
-    country: string,
-    dishCategory: DishCategoryKey[],
-    recipeCategory: RecipeCategoryKey[],
-    tolerance: ToleranceKey[],
-    ingredients: Ingredient[],
-    author: string,
-    id?: number
+    recipe: {
+      name: string,
+      difficulty: number,
+      duration: string,
+      price: number,
+      description: string,
+      country: string,
+      dishCategory: DishCategory[],
+      recipeCategory: RecipeCategory[],
+      tolerance: Tolerance[],
+      ingredients: Ingredient[],
+      author: string,
+      id?: number
+    }
   ) {
-    this._id = id;
-    this._name = name;
-    this._difficulty = difficulty;
-    this._duration = duration;
-    this._price = price;
-    this._description = description;
-    this._country = country;
-    this._dishCategory = dishCategory;
-    this._recipeCategory = recipeCategory;
-    this._tolerance = tolerance;
-    this._ingredients = ingredients;
-    this._author = author;
+    this._id = recipe.id;
+    this._name = recipe.name;
+    this._difficulty = recipe.difficulty;
+    this._duration = recipe.duration;
+    this._price = recipe.price;
+    this._description = recipe.description;
+    this._country = recipe.country;
+    this._dishCategory = recipe.dishCategory;
+    this._recipeCategory = recipe.recipeCategory;
+    this._tolerance = recipe.tolerance;
+    this._ingredients = recipe.ingredients;
+    this._author = recipe.author;
   }
 
   get id(): number | undefined {
@@ -114,11 +116,11 @@ export class Recipe implements IRecipe {
     this._country = value;
   }
 
-  get dishCategory(): DishCategoryKey[] {
+  get dishCategory(): DishCategory[] {
     return this._dishCategory;
   }
 
-  set dishCategory(value: DishCategoryKey[]) {
+  set dishCategory(value: DishCategory[]) {
     this._dishCategory = value;
   }
 
@@ -126,15 +128,15 @@ export class Recipe implements IRecipe {
     return this._recipeCategory;
   }
 
-  set recipeCategory(value: RecipeCategoryKey[]) {
+  set recipeCategory(value: RecipeCategory[]) {
     this._recipeCategory = value;
   }
 
-  get tolerance(): ToleranceKey[] {
+  get tolerance(): Tolerance[] {
     return this._tolerance;
   }
 
-  set tolerance(value: ToleranceKey[]) {
+  set tolerance(value: Tolerance[]) {
     this._tolerance = value;
   }
 

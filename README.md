@@ -11,14 +11,16 @@ The main class of the SDK is `Smartcook`, which encapsulates the basic and recip
 - `baseUrl` (optional): The base URL for the SmartCook API. Defaults to "https://www.smartcook-project.eu/api". Added because the URL can be changed in the future by the API owner, or you want to test it on your local server.
 - `userId`: The user ID used for authentication.
 - `secret`: The secret key used for generating signatures.
+- `authorName`:  The author name of the recipe. It is required when creating a new recipe or updating an existing one.
 
 #### Example:
 
-```javascript
+```typescript
 const smartCookSDK = new Smartcook({
   baseUrl: "https://www.smartcook-project.eu/api",
   userId: "your_user_id",
-  secret: "your_secret_key"
+  secret: "your_secret_key",
+  authorName: "your_author_name"
 });
 ```
 
@@ -30,7 +32,7 @@ Echoes a message to the SmartCook API.
 
 ##### Example:
 
-```javascript
+```typescript
 smartCookSDK.basics.echo("Hello, SmartCook!")
   .then(response => {
     console.log(response);
@@ -46,7 +48,7 @@ Sends an API call to test if the API is working and returns a default message by
 
 ##### Example:
 
-```javascript
+```typescript
 smartCookSDK.basics.default()
   .then(response => {
     console.log(response);
@@ -64,7 +66,7 @@ Retrieves a list of categories from the SmartCook API.
 
 ##### Example:
 
-```javascript
+```typescript
 smartCookSDK.recipes.listCategories()
   .then(categories => {
     console.log(categories);
@@ -80,7 +82,7 @@ Adds a new recipe to the SmartCook API.
 
 ##### Example:
 
-```javascript
+```typescript
 const recipeData = new Recipe();
 
 smartCookSDK.recipes.addNewRecipe(recipeData)
@@ -98,7 +100,7 @@ Validates a recipe with the SmartCook API.
 
 ##### Example:
 
-```javascript
+```typescript
 const recipeData = new Recipe();
 
 smartCookSDK.recipes.validateRecipe(recipeData)
@@ -116,7 +118,7 @@ Deletes a recipe from database using the SmartCook API.
 
 ##### Example:
 
-```javascript
+```typescript
 smartCookSDK.recipes.removeRecipe(3)
   .then(response => {
     console.log(response);
@@ -126,30 +128,119 @@ smartCookSDK.recipes.removeRecipe(3)
   });
 ```
 
+### Needed types for `Recipe` and `Ingredient` classes
+
+#### DishCategory
+
+```typescript
+export enum DishCategory {
+  Breakfast = 1,
+  Soup = 2,
+  MainCourse = 3,
+  Dessert = 4,
+  Dinner = 5,
+}
+```
+
+#### RecipeCategory
+
+```typescript
+export enum RecipeCategory {
+  Soup = 1,
+  Meat = 2,
+  MeatFree = 3,
+  Dessert = 4,
+  Sauce = 5,
+  Pasta = 6,
+  Salad = 7,
+  SweetFood = 8,
+  Drink = 9,
+}
+```
+
+#### Difficulty
+
+```typescript
+export enum Difficulty {
+  Simple = 1,
+  Medium = 2,
+  Difficult = 3,
+}
+```
+
+#### Price
+
+```typescript
+export enum Price {
+  Cheap = 1,
+  Medium = 2,
+  Expensive = 3,
+}
+```
+
+#### Unit
+
+```typescript
+export enum Unit {
+  Liter = "l",
+  Gram = "g",
+  Piece = "pc",
+}
+```
+#### Tolerance
+
+```typescript
+export enum Tolerance {
+  Vegetarian = 1,
+  Vegan = 2,
+  Nuts = 3,
+  Gluten = 4,
+  Lactose = 5,
+  Spicy = 6,
+  Alcohol = 7,
+  SeaFood = 8,
+  Mushrooms = 9,
+}
+```
+
+#### Necessary
+
+```typescript
+export enum Necessary {
+  yes = '1',
+  no = '0'
+}
+```
+
 ### `Recipes` and `Ingredient` class
 To use the `Recipes` and `Ingredients` classes in the SmartCook SDK, you can follow the examples below. These examples demonstrate how to create instances of the classes, populate them with data, and then use them with the SDK functions.
 
-```javascript
-const ingredient1 = new Ingredient("Tomato", 2, "pc", Necessary.yes, "Ripe and red");
-const ingredient2 = new Ingredient("Onion", 1, "pc", Necessary.yes, "White");
+```typescript
+const ingredient1 = new Ingredient("Tomato", 2, Unit.Piece, Necessary.yes, "Ripe and red");
+const ingredient2 = new Ingredient("Onion", 1, Unit.Piece, Necessary.yes, "White");
 
-const recipeData = new Recipe(
-    "Spaghetti",                // Name
-    2,                          // Difficulty
-    "30",                       // Duration
-    5,                          // Price
-    "Abcdefgh",                 // Description
-    "cs",                       // Country (ISO 3166 alpha-2)
-    [1, 2],                     // Dish category
-    [9],                        // Recipe Category
-    [1],                        // Tolerance
-    [ingredient1, ingredient2], // Ingredient/s
-    "Adam Lipert"               // Author (has to be the same name as name in database
-);
+const recipeData = new Recipe({
+    name: "Recipe name",
+    difficulty: Difficulty.Medium,
+    duration: "2",
+    price: Price.Medium,
+    description: "Recipe description",
+    country: "cs",
+    dishCategory: [
+        DishCategory.Breakfast
+    ],
+    recipeCategory: [
+        RecipeCategory.Meat,
+        RecipeCategory.Drink
+    ],
+    tolerance: [
+        Tolerance.Alcohol,
+        Tolerance.Gluten
+    ],
+    ingredients: [
+        ingredient1,
+        ingredient2
+    ],
+    author: client.authorName,
+});
 ```
-
-### TODO:
-
-- [ ] Create an Enum for Dish category, Recipe Category, Tolerance, Difficulty, Unit, Price (for easier use in programming)
-- [ ] Fix all missing imports
-- [ ] Add function to map an object to recipe alongside the standard use
