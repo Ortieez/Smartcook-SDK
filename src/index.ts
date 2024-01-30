@@ -12,6 +12,8 @@ export {
   Unit,
   Tolerance
 } from "./resources/recipes/types";
+export { Status, ErrorResponse, ValidResponse, DefaultResponse, EchoResponse } from "./resources/basics/types";
+
 
 export class Smartcook {
   basics: Basics;

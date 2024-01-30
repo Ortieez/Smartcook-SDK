@@ -6,9 +6,9 @@ import {
     Price,
     Recipe,
     RecipeCategory,
-    Smartcook,
+    Smartcook, Status,
     Tolerance,
-    Unit
+    Unit,
 } from "../dist";
 import config from "../ortieez.config.json";
 
@@ -38,14 +38,18 @@ let recipe = new Recipe({
             unit: Unit.Piece,
             necessary: Necessary.no,
             comment: "ahoj",
-        })
+        }),
     ],
     author: client.authorName,
 });
 
 // client.recipes.addNewRecipe(recipe).then(data => console.log(data));
-// client.recipes.removeRecipe(4).then(data => console.log(data));
-// client.recipes.validateRecipe(recipe).then(data => console.log(data));
+// client.recipes.removeRecipe(5).then(data => console.log(data));
+// client.recipes.validateRecipe(recipe).then(data => {
+//     if (data.stat == Status.ok) {
+//         client.recipes.addNewRecipe(recipe).then(data => console.log(data));
+//     }
+// });
 // client.recipes.listCategories().then(data => console.log(data));
 // client.basics.echo("ahoj").then(data => console.log(data));
 // client.basics.default().then(data => console.log(data));
