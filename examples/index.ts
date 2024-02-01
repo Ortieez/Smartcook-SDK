@@ -9,6 +9,7 @@ import {
     Smartcook, Status,
     Tolerance,
     Unit,
+    RecipeResponse
 } from "../dist";
 import config from "../ortieez.config.json";
 
@@ -43,11 +44,15 @@ let recipe = new Recipe({
     author: client.authorName,
 });
 
+// client.recipes.getRecipes().then(data => console.log(data));
+// client.recipes.getRecipeById(1).then(data => console.log(data))
+
 // client.recipes.addNewRecipe(recipe).then(data => console.log(data));
 // client.recipes.removeRecipe(5).then(data => console.log(data));
 // client.recipes.validateRecipe(recipe).then(data => {
+//     console.log(data)
 //     if (data.stat == Status.ok) {
-//         client.recipes.addNewRecipe(recipe).then(data => console.log(data));
+//         client.recipes.addNewRecipe(recipe).then((data: RecipeResponse)  => console.log(data));
 //     }
 // });
 // client.recipes.listCategories().then(data => console.log(data));

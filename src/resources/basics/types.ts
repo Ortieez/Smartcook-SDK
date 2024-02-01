@@ -35,3 +35,12 @@ export type ValidResponse = {
   time: number;
   sign: string;
 };
+
+export type RecipeResponse = {
+  stat: Status.ok;
+  mess: string;
+  data: Record<string, any>;
+  user: number;
+  time: number;
+  sign: string;
+}
