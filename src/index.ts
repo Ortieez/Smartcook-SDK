@@ -10,9 +10,12 @@ export {
   Difficulty,
   Price,
   Unit,
-  Tolerance
+  Tolerance,
+  Attribute,
+  Filter,
+  FilterParams
 } from "./resources/recipes/types";
-export { Status, ErrorResponse, ValidResponse, DefaultResponse, EchoResponse } from "./resources/basics/types";
+export { Status, ErrorResponse, ValidResponse } from "./resources/basics/types";
 
 
 export class Smartcook {

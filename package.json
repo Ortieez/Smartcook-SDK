@@ -1,6 +1,6 @@
 {
   "name": "smartcook-sdk",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "SDK for a school project Smartcook api",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.11",
+    "@types/node": "^20.11.15",
     "jest": "^29.7.0",
     "microbundle": "^0.15.1",
     "prettier": "^3.2.4",
