@@ -1,73 +1,89 @@
-import { Status } from '../basics/types';
-
 export enum DishCategory {
-  Breakfast = 1,
-  Soup = 2,
-  MainCourse = 3,
-  Dessert = 4,
-  Dinner = 5,
+  BREAKFAST = 1,
+  SOUP = 2,
+  MAINCOURSE = 3,
+  DESSERT = 4,
+  DINNER = 5,
 }
 
 export enum RecipeCategory {
-  Soup = 1,
-  Meat = 2,
-  MeatFree = 3,
-  Dessert = 4,
-  Sauce = 5,
-  Pasta = 6,
-  Salad = 7,
-  SweetFood = 8,
-  Drink = 9,
+  SOUP = 1,
+  MEAT = 2,
+  MEATFREE = 3,
+  DESSERT = 4,
+  SAUCE = 5,
+  PASTA = 6,
+  SALAD = 7,
+  SWEETFOOD = 8,
+  DRINK = 9,
 }
 
 export enum Difficulty {
-  Simple = 1,
-  Medium = 2,
-  Difficult = 3,
+  SIMPLE = 1,
+  MEDIUM = 2,
+  DIFFICULT = 3,
 }
 
 export enum Price {
-  Cheap = 1,
-  Medium = 2,
-  Expensive = 3,
+  CHEAP = 1,
+  MEDIUM = 2,
+  EXPENSIVE = 3,
 }
 
 export enum Unit {
-  Liter = "l",
-  Gram = "g",
-  Piece = "pc",
+  LITER = "l",
+  GRAM = "g",
+  PIECE = "pc",
 }
 
 export enum Tolerance {
-  Vegetarian = 1,
-  Vegan = 2,
-  Nuts = 3,
-  Gluten = 4,
-  Lactose = 5,
-  Spicy = 6,
-  Alcohol = 7,
-  SeaFood = 8,
-  Mushrooms = 9,
+  VEGETARIAN = 1,
+  VEGAN = 2,
+  NUTS = 3,
+  GLUTEN = 4,
+  LACTOSE = 5,
+  SPICY = 6,
+  ALCOHOL = 7,
+  SEAFOOD = 8,
+  MUSHROOMS = 9,
 }
 
-export type CategoriesData = {
-  dish_category: DishCategory[];
-  recipe_category: RecipeCategory[];
-  difficulty: Difficulty[];
-  price: Price[];
-  unit: Unit[];
-  tolerance: Tolerance[];
-};
-
-export type CategoriesResponse = {
-  stat: Status.ok;
-  data: CategoriesData;
-  user: number;
-  time: number;
-  sign: string;
-};
-
 export enum Necessary {
-  yes = '1',
-  no = '0'
+  YES = '1',
+  NO = '0'
+}
+
+export enum Filter {
+  AUTHOR = 'author',
+  DISH_CATEGORY = 'dish_category',
+  RECIPE_CATEGORY = 'recipe_category',
+  DIFFICULTY = 'difficulty',
+  PRICE = 'price',
+  TOLERANCE = 'tolerance',
+  INGREDIENT = 'ingredient',
+}
+
+export type FilterParams = {
+  author?: string[]
+  dish_category?: DishCategory[],
+  recipe_category?: RecipeCategory[],
+  difficulty?: Difficulty[],
+  price?: Price[],
+  tolerance?: Tolerance[],
+  ingredient?: number[]
+};
+
+export enum Attribute {
+  ID = 'id',
+  NAME = 'name',
+  DIFFICULTY = 'difficulty',
+  DURATION = 'duration',
+  PRICE = 'price',
+  DESCRIPTION = 'description',
+  COUNTRY = 'country',
+  DISH_CATEGORY = 'dish_category',
+  RECIPE_CATEGORY = 'recipe_category',
+  TOLERANCE = 'tolerance',
+  INGREDIENT = 'ingredient',
+  AUTHOR = 'author',
 }

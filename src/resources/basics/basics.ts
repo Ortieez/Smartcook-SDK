@@ -1,8 +1,8 @@
 import { Base } from '../base';
-import { DefaultResponse, EchoResponse, ErrorResponse } from './types';
+import { ErrorResponse, ValidResponse } from './types';
 
 export class Basics extends Base {
-  echo(message: string): Promise<EchoResponse | ErrorResponse> {
+  echo(message: string): Promise<ValidResponse | ErrorResponse> {
     return this.request('/echo', {
       method: 'POST',
       body: this.prepareBody({
@@ -11,7 +11,7 @@ export class Basics extends Base {
     });
   }
 
-  default(): Promise<DefaultResponse | ErrorResponse> {
+  default(): Promise<ValidResponse | ErrorResponse> {
     return this.request('/');
   }
 }

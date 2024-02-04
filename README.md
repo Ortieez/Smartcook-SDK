@@ -42,7 +42,7 @@ smartCookSDK.basics.echo("Hello, SmartCook!")
   });
 ```
 
-#### `default(): Promise<DefaultResponse | ErrorResponse>`
+#### `default(): Promise<ValidResponse | ErrorResponse>`
 
 Sends an API call to test if the API is working and returns a default message by the API.
 
@@ -60,7 +60,7 @@ smartCookSDK.basics.default()
 
 ### Recipe Functions
 
-#### `listCategories(): Promise<CategoriesResponse | ErrorResponse>`
+#### `listCategories(): Promise<ValidResponse | ErrorResponse>`
 
 Retrieves a list of categories from the SmartCook API.
 
